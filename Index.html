@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - ธัญญลักษณ์ อุตสาหะ (เนย)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        prompt: ['Prompt', 'sans-serif'],
+                    },
+                    colors: {
+                        mint: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            300: '#5eead4',
+                            400: '#2dd4bf',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                            700: '#0f766e',
+                        },
+                        cyansky: {
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Prompt', sans-serif;
+            background: #030a0f;
+            color: #f3f4f6;
+            overflow-x: hidden;
+        }
+        .glass-card {
+            background: rgba(13, 148, 136, 0.07);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(45, 212, 191, 0.25);
+            box-shadow: 0 8px 32px 0 rgba(20, 184, 166, 0.15);
+        }
+        .glass-card:hover {
+            border-color: rgba(45, 212, 191, 0.6);
+            box-shadow: 0 12px 40px 0 rgba(20, 184, 166, 0.35);
+        }
+        .neon-glow {
+            text-shadow: 0 0 12px rgba(45, 212, 191, 0.8), 0 0 24px rgba(56, 189, 248, 0.5);
+        }
+        .neon-box-glow {
+            box-shadow: 0 0 25px rgba(45, 212, 191, 0.4), inset 0 0 15px rgba(56, 189, 248, 0.2);
+        }
+        .cyber-grid {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(45, 212, 191, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(45, 212, 191, 0.05) 1px, transparent 1px);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #030a0f;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2dd4bf;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen selection:bg-mint-400 selection:text-slate-950 cyber-grid relative">
+
+    <!-- Interactive Canvas Particle Background -->
+    <canvas id="cyber-canvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
+
+    <header class="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-mint-500/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-mint-400 to-cyansky-500 flex items-center justify-center neon-box-glow group-hover:rotate-12 transition-transform duration-300">
+                    <i class="fa-solid fa-hospital-user text-slate-950 text-lg"></i>
+                </div>
+                <span class="text-xl font-bold bg-gradient-to-r from-mint-300 via-cyansky-400 to-teal-200 bg-clip-text text-transparent">
+                    THANYALAK.DEV
+                </span>
+            </a>
+            
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
+                <a href="#about" class="hover:text-mint-400 transition-colors">เกี่ยวกับฉัน</a>
+                <a href="#personal" class="hover:text-mint-400 transition-colors">ข้อมูลส่วนตัว</a>
+                <a href="#education" class="hover:text-mint-400 transition-colors">การศึกษา</a>
+                <a href="#ambition" class="hover:text-mint-400 transition-colors">ความใฝ่ฝัน</a>
+                <a href="#contact" class="hover:text-mint-400 transition-colors">ติดต่อ</a>
+            </nav>
+
+            <a href="#contact" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-xl bg-gradient-to-r from-mint-400 to-cyansky-500 text-slate-950 font-bold text-sm shadow-lg shadow-mint-500/30 hover:shadow-mint-500/50 hover:scale-105 transition-all duration-300">
+                <i class="fa-solid fa-paper-plane mr-2"></i> ติดต่อฉัน
+            </a>
+        </div>
+    </header>
+
+    <section id="about" class="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden">
+        <!-- Neon background blobs -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-mint-500/10 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="absolute top-1/3 right-10 w-[300px] h-[300px] bg-cyansky-500/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Text Intro -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass-card text-mint-300 text-xs sm:text-sm font-semibold tracking-wider uppercase">
+                        <span class="w-2 h-2 rounded-full bg-mint-400 animate-ping"></span>
+                        <span>Academic Portfolio & Public Health Student</span>
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight">
+                        สวัสดีค่ะ ฉันชื่อ <br>
+                        <span class="bg-gradient-to-r from-mint-300 via-cyansky-400 to-teal-200 bg-clip-text text-transparent neon-glow">
+                            รัญญลักษณ์ อุตสาหะ
+                        </span>
+                    </h1>
+
+                    <div class="flex flex-wrap justify-center lg:justify-start gap-3 text-sm sm:text-base font-medium text-slate-300">
+                        <span class="px-4 py-1.5 rounded-lg glass-card border border-mint-500/30">
+                            <i class="fa-solid fa-user-tag text-mint-400 mr-2"></i> ชื่อเล่น : เนย
+                        </span>
+                        <span class="px-4 py-1.5 rounded-lg glass-card border border-mint-500/30">
+                            <i class="fa-solid fa-cake-candles text-mint-400 mr-2"></i> อายุ : 19 ปี
+                        </span>
+                        <span class="px-4 py-1.5 rounded-lg glass-card border border-mint-500/30">
+                            <i class="fa-solid fa-graduation-cap text-mint-400 mr-2"></i> วสส. ขอนแก่น
+                        </span>
+                    </div>
+
+                    <p class="text-slate-400 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                        ยินดีต้อนรับเข้าสู่เว็บไซต์ประวัติส่วนตัวและแฟ้มสะสมผลงานวิชาการ โทนสีฟ้าเขียวพาสเทลสดใส กำลังศึกษายัง <strong class="text-mint-300 font-semibold">วิทยาลัยการสาธารณสุขสิรินธร จังหวัดขอนแก่น</strong> มุ่งมั่นสู่การเป็นบุคลากรทางการสาธารณสุขเพื่อสังคม
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#personal" class="px-8 py-4 rounded-xl bg-gradient-to-r from-mint-400 to-cyansky-500 text-slate-950 font-bold shadow-lg shadow-mint-500/30 hover:scale-105 transition-all text-center">
+                            ดูข้อมูลส่วนตัว <i class="fa-solid fa-arrow-down ml-2"></i>
+                        </a>
+                        <a href="#education" class="px-8 py-4 rounded-xl glass-card text-slate-200 font-bold hover:bg-mint-500/10 transition-all text-center border border-mint-500/30">
+                            สถานศึกษา <i class="fa-solid fa-school ml-2 text-mint-400"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Profile Image Card -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative group">
+                        <!-- Neon frame glow -->
+                        <div class="absolute -inset-2 bg-gradient-to-tr from-mint-400 via-cyansky-400 to-teal-300 rounded-3xl blur-xl opacity-70 group-hover:opacity-100 transition duration-500 group-hover:duration-200 animate-pulse"></div>
+                        
+                        <div class="relative w-72 sm:w-80 h-[26rem] rounded-2xl overflow-hidden glass-card p-2 border-2 border-mint-400/50 bg-slate-900 shadow-2xl">
+                            <!-- User's provided profile photo -->
+                            <img src="profile.jpg" onerror="this.onerror=null; this.src='https://placehold.co/400x520/14b8a6/08131a?text=Thanyalak';" alt="รัญญลักษณ์ อุตสาหะ (เนย)" class="w-full h-full object-cover rounded-xl group-hover:scale-105 transition-transform duration-500">
+                            
+                            <!-- Floating Status Badge -->
+                            <div class="absolute top-4 right-4 px-3 py-1 rounded-full bg-slate-950/80 backdrop-blur-md border border-mint-400/50 text-mint-300 text-xs font-semibold flex items-center space-x-1.5">
+                                <span class="w-2 h-2 rounded-full bg-mint-400 animate-ping"></span>
+                                <span>นักศึกษา สธ.</span>
+                            </div>
+
+                            <div class="absolute bottom-4 left-4 right-4 p-3 rounded-xl bg-slate-950/85 backdrop-blur-md border border-mint-500/40 text-center shadow-lg">
+                                <p class="text-sm font-bold text-mint-300">รัญญลักษณ์ อุตสาหะ (เนย)</p>
+                                <p class="text-xs text-cyansky-400">วิทยาลัยการสาธารณสุขสิรินธร จ.ขอนแก่น</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Highlight Section -->
+    <section id="education" class="py-12 bg-slate-900/60 relative border-y border-mint-500/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-card p-6 sm:p-8 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-6 border border-mint-400/30">
+                <div class="flex items-center space-x-5">
+                    <div class="w-16 h-16 rounded-2xl bg-mint-400/20 border border-mint-400/40 flex items-center justify-center text-mint-300 text-3xl shrink-0">
+                        <i class="fa-solid fa-university"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs font-semibold text-cyansky-400 uppercase tracking-widest">สถานศึกษาปัจจุบัน</span>
+                        <h3 class="text-xl sm:text-2xl font-bold text-white">วิทยาลัยการสาธารณสุขสิรินธร จังหวัดขอนแก่น</h3>
+                        <p class="text-sm text-slate-400">Sirindhorn College of Public Health Khon Kaen</p>
+                    </div>
+                </div>
+                <span class="px-4 py-2 rounded-xl bg-mint-500/20 border border-mint-400/30 text-mint-300 font-medium text-sm whitespace-nowrap">
+                    <i class="fa-solid fa-location-dot mr-2"></i> จ.ขอนแก่น
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <section id="personal" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-extrabold mb-4">
+                    ข้อมูลส่วนตัว & <span class="text-mint-400">งานอดิเรก</span>
+                </h2>
+                <div class="w-20 h-1.5 bg-gradient-to-r from-mint-400 to-cyansky-500 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- Personal Info Card -->
+                <div class="glass-card p-8 rounded-3xl relative overflow-hidden group">
+                    <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-mint-500/10 rounded-full blur-2xl group-hover:bg-mint-500/20 transition-all"></div>
+                    
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="w-14 h-14 rounded-2xl bg-mint-400/20 border border-mint-400/40 flex items-center justify-center text-mint-400 text-2xl">
+                            <i class="fa-solid fa-id-card"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white">ข้อมูลส่วนตัว</h3>
+                            <p class="text-xs text-mint-300">Personal Information</p>
+                        </div>
+                    </div>
+
+                    <ul class="space-y-4 text-slate-300 font-medium">
+                        <li class="flex items-center justify-between p-3 rounded-xl bg-slate-950/40 border border-slate-800">
+                            <span class="text-slate-400 flex items-center"><i class="fa-solid fa-calendar-days text-mint-400 mr-3"></i> เกิดวันที่</span>
+                            <span class="text-white">5 มีนาคม 2550</span>
+                        </li>
+                        <li class="flex items-center justify-between p-3 rounded-xl bg-slate-950/40 border border-slate-800">
+                            <span class="text-slate-400 flex items-center"><i class="fa-solid fa-globe text-mint-400 mr-3"></i> สัญชาติ</span>
+                            <span class="text-white">ไทย</span>
+                        </li>
+                        <li class="flex items-center justify-between p-3 rounded-xl bg-slate-950/40 border border-slate-800">
+                            <span class="text-slate-400 flex items-center"><i class="fa-solid fa-flag text-mint-400 mr-3"></i> เชื้อชาติ</span>
+                            <span class="text-white">ไทย</span>
+                        </li>
+                        <li class="flex items-center justify-between p-3 rounded-xl bg-slate-950/40 border border-slate-800">
+                            <span class="text-slate-400 flex items-center"><i class="fa-solid fa-place-of-worship text-mint-400 mr-3"></i> ศาสนา</span>
+                            <span class="text-white">พุทธ</span>
+                        </li>
+                        <li class="flex items-center justify-between p-3 rounded-xl bg-slate-950/40 border border-slate-800">
+                            <span class="text-slate-400 flex items-center"><i class="fa-solid fa-droplet text-mint-400 mr-3"></i> เลือดกรุ๊ป</span>
+                            <span class="text-white">B</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Hobbies Card -->
+                <div id="hobbies" class="glass-card p-8 rounded-3xl relative overflow-hidden group">
+                    <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-cyansky-500/10 rounded-full blur-2xl group-hover:bg-cyansky-500/20 transition-all"></div>
+                    
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="w-14 h-14 rounded-2xl bg-cyansky-500/20 border border-cyansky-500/40 flex items-center justify-center text-cyansky-400 text-2xl">
+                            <i class="fa-solid fa-gamepad"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white">งานอดิเรก</h3>
+                            <p class="text-xs text-cyansky-400">Hobbies & Interests</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="flex items-center p-4 rounded-xl bg-slate-950/40 border border-slate-800 hover:border-mint-400/50 transition-all group/item">
+                            <div class="w-10 h-10 rounded-lg bg-mint-400/20 flex items-center justify-center text-mint-400 mr-4 group-hover/item:scale-110 transition-transform">
+                                <i class="fa-solid fa-film"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">ดูหนัง / ซีรีส์</h4>
+                                <p class="text-xs text-slate-400">ผ่อนคลายและเรียนรู้ภาษาจากสื่อบันเทิง</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center p-4 rounded-xl bg-slate-950/40 border border-slate-800 hover:border-mint-400/50 transition-all group/item">
+                            <div class="w-10 h-10 rounded-lg bg-mint-400/20 flex items-center justify-center text-mint-400 mr-4 group-hover/item:scale-110 transition-transform">
+                                <i class="fa-solid fa-music"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">ฟังเพลง</h4>
+                                <p class="text-xs text-slate-400">สร้างสมาธิและความเพลิดเพลินระหว่างวัน</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center p-4 rounded-xl bg-slate-950/40 border border-slate-800 hover:border-mint-400/50 transition-all group/item">
+                            <div class="w-10 h-10 rounded-lg bg-mint-400/20 flex items-center justify-center text-mint-400 mr-4 group-hover/item:scale-110 transition-transform">
+                                <i class="fa-solid fa-book-open"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">อ่านหนังสือ</h4>
+                                <p class="text-xs text-slate-400">เปิดมุมมองใหม่ๆ และพัฒนาทักษะการคิดวิเคราะห์</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="ambition" class="py-20 relative bg-slate-900/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-card p-8 sm:p-12 rounded-3xl relative overflow-hidden border border-mint-400/40">
+                <div class="absolute -right-20 -top-20 w-80 h-80 bg-mint-500/15 rounded-full blur-[100px] pointer-events-none"></div>
+
+                <div class="max-w-3xl mx-auto text-center space-y-6">
+                    <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-mint-400/10 text-mint-300 text-sm font-semibold">
+                        <i class="fa-solid fa-bullseye"></i>
+                        <span>ความใฝ่ฝันในอนาคต</span>
+                    </div>
+
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+                        เป้าหมายอันสูงสุดในชีวิต
+                    </h2>
+
+                    <p class="text-slate-300 text-lg sm:text-xl leading-relaxed">
+                        ความใฝ่ฝันของฉันคือการได้รับราชการ เพื่อมีอาชีพที่มั่นคงสามารถดูแลครอบครัวและตอบแทนพระคุณของพ่อแม่ได้ 
+                        ฉันตั้งใจที่จะพัฒนาตนเองอยู่เสมอ ทั้งด้านความรู้ ความสามารถ และความรับผิดชอบ เพื่อให้ได้ทำงานอย่างเต็มศักยภาพ 
+                        และเป็นส่วนหนึ่งในการทำประโยชน์ให้แก่สังคมและประเทศชาติ
+                    </p>
+
+                    <div class="pt-4 flex flex-wrap justify-center gap-4">
+                        <span class="px-5 py-2 rounded-xl bg-slate-900 border border-mint-500/30 text-mint-300 font-semibold text-sm">
+                            <i class="fa-solid fa-shield-halved mr-2"></i> ความมั่นคงในอาชีพ
+                        </span>
+                        <span class="px-5 py-2 rounded-xl bg-slate-900 border border-mint-500/30 text-mint-300 font-semibold text-sm">
+                            <i class="fa-solid fa-hands-holding-child mr-2"></i> ตอบแทนพระคุณครอบครัว
+                        </span>
+                        <span class="px-5 py-2 rounded-xl bg-slate-900 border border-mint-500/30 text-mint-300 font-semibold text-sm">
+                            <i class="fa-solid fa-earth-americas mr-2"></i> ทำประโยชน์ให้สังคม
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 bg-slate-900/50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-extrabold mb-4">
+                    ช่องทางการ <span class="text-mint-400">ติดต่อ</span>
+                </h2>
+                <div class="w-20 h-1.5 bg-gradient-to-r from-mint-400 to-cyansky-500 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                
+                <!-- Phone -->
+                <div onclick="copyText('0924307434', 'คัดลอกเบอร์โทรศัพท์เรียบร้อยแล้ว!')" class="glass-card p-6 rounded-2xl flex flex-col items-center text-center group hover:-translate-y-2 transition-all duration-300 cursor-pointer">
+                    <div class="w-14 h-14 rounded-2xl bg-mint-400/20 border border-mint-400/40 flex items-center justify-center text-mint-400 text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-phone"></i>
+                    </div>
+                    <h3 class="font-bold text-white mb-1">เบอร์โทรศัพท์</h3>
+                    <p class="text-slate-400 text-sm font-mono">0924307434</p>
+                    <span class="mt-2 text-xs text-mint-400 opacity-0 group-hover:opacity-100 transition-opacity"><i class="fa-regular fa-copy mr-1"></i> คลิกเพื่อคัดลอก</span>
+                </div>
+
+                <!-- Instagram / Social ID -->
+                <div onclick="copyText('@thanyalak050325', 'คัดลอก Instagram ID เรียบร้อยแล้ว!')" class="glass-card p-6 rounded-2xl flex flex-col items-center text-center group hover:-translate-y-2 transition-all duration-300 cursor-pointer">
+                    <div class="w-14 h-14 rounded-2xl bg-mint-400/20 border border-mint-400/40 flex items-center justify-center text-mint-400 text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-brands fa-instagram"></i>
+                    </div>
+                    <h3 class="font-bold text-white mb-1">Instagram ID</h3>
+                    <p class="text-slate-400 text-sm break-all font-mono">@thanyalak050325</p>
+                    <span class="mt-2 text-xs text-mint-400 opacity-0 group-hover:opacity-100 transition-opacity"><i class="fa-regular fa-copy mr-1"></i> คลิกเพื่อคัดลอก</span>
+                </div>
+
+                <!-- Email -->
+                <div onclick="copyText('50@gmail.com', 'คัดลอกอีเมลเรียบร้อยแล้ว!')" class="glass-card p-6 rounded-2xl flex flex-col items-center text-center group hover:-translate-y-2 transition-all duration-300 cursor-pointer">
+                    <div class="w-14 h-14 rounded-2xl bg-mint-400/20 border border-mint-400/40 flex items-center justify-center text-mint-400 text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+                    <h3 class="font-bold text-white mb-1">อีเมล</h3>
+                    <p class="text-slate-400 text-sm break-all font-mono">50@gmail.com</p>
+                    <span class="mt-2 text-xs text-mint-400 opacity-0 group-hover:opacity-100 transition-opacity"><i class="fa-regular fa-copy mr-1"></i> คลิกเพื่อคัดลอก</span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Toast notification for copy -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="glass-card px-5 py-3 rounded-xl border border-mint-400/50 flex items-center space-x-3 shadow-2xl bg-slate-900/90">
+            <i class="fa-solid fa-circle-check text-mint-400 text-lg"></i>
+            <span id="toast-message" class="text-sm font-medium text-slate-200"></span>
+        </div>
+    </div>
+
+    <footer class="py-8 bg-slate-950 border-t border-slate-900 text-center text-sm text-slate-500 relative z-10">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>&copy; 2026 Thanyalak Utsaha. Sirindhorn College of Public Health Khon Kaen.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Copy text helper
+        function copyText(text, message) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+            toastMsg.textContent = message;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        // Particle Canvas Background
+        const canvas = document.getElementById('cyber-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = (Math.random() - 0.5) * 0.5;
+                this.speedY = (Math.random() - 0.5) * 0.5;
+                this.color = Math.random() > 0.5 ? '#2dd4bf' : '#38bdf8';
+                this.alpha = Math.random() * 0.5 + 0.2;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+            }
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.alpha;
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        for (let i = 0; i < 45; i++) {
+            particles.push(new Particle());
+        }
+
+        function animateCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateCanvas);
+        }
+        animateCanvas();
+
+        // Smooth scroll for nav
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
